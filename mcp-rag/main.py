@@ -6,7 +6,7 @@ from bm25_retriever import (
 )  # Assuming the previous code is in bm25_retriever.py
 
 # Initialize the MCP server
-mcp = FastMCP("BM25RAGServer")
+mcp = FastMCP("BM25RAGServer", port=8000)
 
 # Initialize the BM25 retriever with the path to our corpus
 corpus_path = "./corpus"  # Replace with the actual path to your corpus directory
@@ -32,4 +32,4 @@ def perform_rag(query: str, top_n: int = 3) -> List[str]:
 
 
 if __name__ == "__main__":
-    mcp.run()
+    mcp.run(transport="sse")
